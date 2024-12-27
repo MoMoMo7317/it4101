@@ -1,0 +1,127 @@
+/* กำหนดรูปแบบทั่วไป */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+/* การ์ดสำหรับหลักสูตร */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.card .description {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* เปลี่ยนสีปุ่มเป็นสีขาวและตัวหนังสือเป็นสีดำ */
+.card .button {
+  background-color: #ffffff; /* สีพื้นหลังของปุ่มเป็นสีขาว */
+  color: #000000;  /* ตัวหนังสือเป็นสีดำ */
+  border: 2px solid #000000;  /* กรอบปุ่มเป็นสีดำ */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 16px;
+}
+
+.card .button:hover {
+  background-color: #e0e0e0; /* สีพื้นหลังเมื่อเมาส์วางเป็นสีเทาอ่อน */
+  transform: scale(1.05); /* เพิ่มเอฟเฟกต์ขยายขนาดปุ่ม */
+}
+
+.iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+  border-radius: 10px;
+  display: none;
+}
+
+/* ให้ overlay ปรากฏเมื่อมีการแสดง PDF */
+.card iframe:focus + .overlay,
+.card iframe:active + .overlay {
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+      font-size: 28px;
+  }
+
+  .subtitle {
+      font-size: 16px;
+  }
+
+  .card .title {
+      font-size: 22px;
+  }
+
+  .card .description {
+      font-size: 14px;
+  }
+
+  .button {
+      font-size: 14px;
+  }
+}
