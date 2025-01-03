@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://momomo7317.github.io/itpoly_4101/",
   "dependencies": {
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",

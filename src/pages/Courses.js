@@ -1,104 +1,46 @@
 import React, { useState } from 'react';
 import './Courses.css'; // นำเข้าไฟล์ CSS
+import { Worker } from '@react-pdf-viewer/core'; // สำหรับการประมวลผล PDF
+import '@react-pdf-viewer/core/lib/styles/index.css'; // สไตล์พื้นฐาน
+import '@react-pdf-viewer/default-layout/lib/styles/index.css'; // สไตล์ Layout เริ่มต้น
+import { Viewer, SpecialZoomLevel } from '@react-pdf-viewer/core';
+
+// ข้อมูลไฟล์ PDF
+const pdfFiles = [
+  { title: 'สาขาวิชาเทคโนโลยีสารสนเทศ 1', file: '/itpoly_4101/pdf/1.pdf' },
+  { title: 'สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร์ 1', file: '/itpoly_4101/pdf/2.pdf' },
+  { title: 'สาขาวิชาเทคโนโลยีสารสนเทศ 2', file: '/itpoly_4101/pdf/3.pdf' },
+  { title: 'สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร์ 2', file: '/itpoly_4101/pdf/4.pdf' },
+];
 
 function Courses() {
-  const [showCourse1, setShowCourse1] = useState(false);
-  const [showCourse2, setShowCourse2] = useState(false);
-  const [showCourse3, setShowCourse3] = useState(false);
-  const [showCourse4, setShowCourse4] = useState(false);
+  const [selectedPDF, setSelectedPDF] = useState(null);
 
   return (
     <div className="container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
         <div className="grid">
-          {/* หลักสูตร 1 */}
-          <div className="card">
-            <h3 className="title">สาขาวิชาเทคโนโลยีสารสนเทศ</h3>
-            <p className="description">ประเภทวิชาอุตสาหกรรมดิจิทัลและเทคโนโลยีสารสนเทศกลุ่มอาชีพซอฟต์แวร์และการประยุกต์สาขาวิชาเทคโนโลยีสารสนเทศ</p>
-            <button 
-              onClick={() => setShowCourse1(!showCourse1)} 
-              className="button"
-            >
-              {showCourse1 ? 'ซ่อน PDF หลักสูตร' : 'ดู PDF หลักสูตร 1'}
-            </button>
-
-            {showCourse1 && (
-              <iframe 
-                src="/pdf/1.pdf"  // ตรวจสอบว่าตำแหน่ง PDF ถูกต้อง
-                className="iframe"
-                title="หลักสูตร 1"
-              />
-            )}
-
-            <div className="overlay"></div>
-          </div>
-
-          {/* หลักสูตร 2 */}
-          <div className="card">
-            <h3 className="title">สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร์</h3>
-            <p className="description">ประเภทวิชาอุตสาหกรรมดิจิทัลและเทคโนโลยีสารสนเทศกลุ่มอาชีพซอฟต์แวร์และการประยุกต์สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร์</p>
-            <button 
-              onClick={() => setShowCourse2(!showCourse2)} 
-              className="button"
-            >
-              {showCourse2 ? 'ซ่อน PDF หลักสูตร' : 'ดู PDF หลักสูตร 2'}
-            </button>
-
-            {showCourse2 && (
-              <iframe 
-                src="/pdf/2.pdf"  // ตรวจสอบว่าตำแหน่ง PDF ถูกต้อง
-                className="iframe"
-                title="หลักสูตร 2"
-              />
-            )}
-
-            <div className="overlay"></div>
-          </div>
-
-          {/* หลักสูตร 3 */}
-          <div className="card">
-            <h3 className="title">สาขาวิชาเทคโนโลยีสารสนเทศ</h3>
-            <p className="description">ประเภทวิชาอุตสาหกรรมดิจิทัลและเทคโนโลยีสารสนเทศกลุ่มอาชีพซอฟต์แวร์และการประยุกต์สาขาวิชาเทคโนโลยีสารสนเทศ</p>
-            <button 
-              onClick={() => setShowCourse3(!showCourse3)} 
-              className="button"
-            >
-              {showCourse3 ? 'ซ่อน PDF หลักสูตร' : 'ดู PDF หลักสูตร 3'}
-            </button>
-
-            {showCourse3 && (
-              <iframe 
-                src="/pdf/3.pdf"  // ตรวจสอบว่าตำแหน่ง PDF ถูกต้อง
-                className="iframe"
-                title="หลักสูตร 3"
-              />
-            )}
-
-            <div className="overlay"></div>
-          </div>
-
-          {/* หลักสูตร 4 */}
-          <div className="card">
-            <h3 className="title">สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร</h3>
-            <p className="description">ประเภทวิชาอุตสาหกรรมดิจิทัลและเทคโนโลยีสารสนเทศกลุ่มอาชีพซอฟต์แวร์และการประยุกต์สาขาวิชาคอมพิวเตอร์โปรแกรมเมอร์</p>
-            <button 
-              onClick={() => setShowCourse4(!showCourse4)} 
-              className="button"
-            >
-              {showCourse4 ? 'ซ่อน PDF หลักสูตร' : 'ดู PDF หลักสูตร 4'}
-            </button>
-
-            {showCourse4 && (
-              <iframe 
-                src="/pdf/4.pdf"  // ตรวจสอบว่าตำแหน่ง PDF ถูกต้อง
-                className="iframe"
-                title="หลักสูตร 4"
-              />
-            )}
-
-            <div className="overlay"></div>
-          </div>
+          {pdfFiles.map((pdf, index) => (
+            <div key={index} className="card">
+              <h3 className="title">{pdf.title}</h3>
+              <button
+                className="button"
+                onClick={() => setSelectedPDF(index === selectedPDF ? null : index)}
+              >
+                {selectedPDF === index ? 'ซ่อน PDF' : `ดู ${pdf.title}`}
+              </button>
+              {selectedPDF === index && (
+                <div className="pdf-viewer">
+                  <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`}>
+                    <Viewer
+                      fileUrl={pdf.file}
+                      defaultScale={SpecialZoomLevel.PageWidth}
+                    />
+                  </Worker>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

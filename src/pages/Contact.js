@@ -3,12 +3,12 @@ import React from 'react';
 const Contact = () => {
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>ติดต่อเรา</h2>
-      <p style={styles.description}>หากท่านมีคำถามเกี่ยวกับหลักสูตรหรือข้อมูลอื่นๆ สามารถติดต่อเราได้ที่:</p>
+      <h2 style={styles.title}>Contact us</h2>
+      <p style={styles.description}>If you have any questions about the course or any other information, please contact us at:</p>
       <div style={styles.contactInfo}>
         <p style={styles.contactItem}><strong>Email:</strong> stu67319010026@lannapoly.ac.th</p>
         <p style={styles.contactItem}><strong>Phone:</strong> 0966913331</p>
-        <p style={styles.contactItem}><strong>Address:</strong> 123 ถนนหลัก วิทยาลัยโปลิเทคนิค กรุงเทพฯ</p>
+        <p style={styles.contactItem}><strong>Address:</strong> 2 Sukkasem Road, Chang Phueak Subdistrict, Mueang Chiang Mai 50300</p>
       </div>
     </div>
   );

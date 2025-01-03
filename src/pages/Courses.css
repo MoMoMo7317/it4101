@@ -1,127 +1,100 @@
-/* กำหนดรูปแบบทั่วไป */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
-
+/* Container สำหรับจัดการ Layout */
 .container {
-  padding: 40px 0;
+  padding: 50px 20px;
+  background-color: #f8f8f8; /* พื้นหลังสีอ่อน ๆ */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 12px; /* เพิ่มความโค้งมนให้กับ container */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* เงาเบาๆ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.subtitle {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 30px;
-}
-
+/* Grid สำหรับการจัดเรียงการ์ด */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* กำหนดให้มีการจัดเรียงให้พอดี */
+  gap: 30px;
+  margin-top: 30px;
+  justify-items: center;
+  align-items: start;
+  width: 100%; /* ให้ grid มีความกว้างเต็มพื้นที่ */
 }
 
-/* การ์ดสำหรับหลักสูตร */
+/* การ์ดสำหรับแต่ละหลักสูตร */
 .card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* ปรับขนาดให้การ์ดเต็มพื้นที่ */
+  max-width: 380px; /* ความกว้างสูงสุด */
   text-align: center;
-  transition: transform 0.3s ease-in-out;
-  position: relative;
+  overflow: hidden;
+  min-height: 400px; /* กำหนดความสูงขั้นต่ำของการ์ด */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* จัดเนื้อหาในการ์ดให้มีระยะห่างที่เหมาะสม */
 }
 
+/* เมื่อ hover การ์ด */
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.card .title {
-  font-size: 24px;
-  font-weight: bold;
+/* ชื่อหลักสูตร */
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: #333;
   margin-bottom: 15px;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
-.card .description {
-  font-size: 16px;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-/* เปลี่ยนสีปุ่มเป็นสีขาวและตัวหนังสือเป็นสีดำ */
-.card .button {
-  background-color: #ffffff; /* สีพื้นหลังของปุ่มเป็นสีขาว */
-  color: #000000;  /* ตัวหนังสือเป็นสีดำ */
-  border: 2px solid #000000;  /* กรอบปุ่มเป็นสีดำ */
-  padding: 10px 20px;
-  border-radius: 5px;
+/* ปุ่มที่ใช้สำหรับแสดงหรือซ่อน PDF */
+.button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  font-size: 16px;
+  width: 100%; /* ให้ปุ่มเต็มความกว้างของการ์ด */
+  margin-top: 15px;
+  text-align: center;
+  min-height: 50px; /* กำหนดความสูงของปุ่ม */
 }
 
-.card .button:hover {
-  background-color: #e0e0e0; /* สีพื้นหลังเมื่อเมาส์วางเป็นสีเทาอ่อน */
-  transform: scale(1.05); /* เพิ่มเอฟเฟกต์ขยายขนาดปุ่ม */
+/* เมื่อ hover ปุ่ม */
+.button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
-.iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
+/* ส่วนสำหรับการแสดง PDF */
+.pdf-viewer {
   margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  width: 100%; /* ให้ส่วนนี้เต็มความกว้าง */
+  min-height: 500px; /* ให้ความสูงเท่ากันกับการ์ด */
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.7);
-  z-index: 1;
-  border-radius: 10px;
-  display: none;
-}
-
-/* ให้ overlay ปรากฏเมื่อมีการแสดง PDF */
-.card iframe:focus + .overlay,
-.card iframe:active + .overlay {
-  display: block;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .title {
-      font-size: 28px;
-  }
-
-  .subtitle {
-      font-size: 16px;
-  }
-
-  .card .title {
-      font-size: 22px;
-  }
-
-  .card .description {
-      font-size: 14px;
-  }
-
-  .button {
-      font-size: 14px;
-  }
+/* ขนาด iframe ที่ใช้แสดง PDF */
+.pdf-viewer iframe {
+  width: 100%;
+  height: 100%; /* ให้ iframe เต็มความสูงของ container */
+  border: none;
+  border-radius: 12px;
 }
